@@ -1,0 +1,158 @@
+header {
+    background-color: #476758; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box; 
+    position: fixed;   
+    top: 0;            
+    left: 0;           
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo-img {
+    height: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    border-radius: 50%; 
+}
+  
+.logo {
+    width: 100%; 
+    height: 100%; 
+}
+
+a {
+   color: inherit;
+   text-decoration: none;
+}
+
+.menu li, .title {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.title {
+    font-size: 1.4em;
+}
+
+.menu li {
+    font-size: 1em;
+    transition: color 0.3s ease; 
+    cursor: pointer;
+}
+
+.menu li:hover {
+    color: #a9a4a4;
+}
+
+.menu ul:not(.dropdown) {
+    display: flex;
+    gap: 4vw;
+    padding-right: 2vw;
+}
+
+.menu ul li {
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdown {
+    border-radius: 2px;
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    left: 30%;
+    background-color: #fff; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width:15vw;  
+}
+
+.dropdown li a {
+    text-decoration: none;
+    color: #212832;
+    font-size: 1vw;  
+}
+
+.dropdown li {
+    padding: 20px;
+    border-bottom: 0.005em solid #a9a4a449  ;
+}
+
+.dropdown li a:hover {
+    color: #a9a4a449;
+}
+
+.burger {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    header {
+        height: 60px;
+    }
+
+    .burger {
+        display: block;
+        cursor: pointer; 
+        padding-right: 10px;
+        transition: transform 0.2s ease;
+    }
+
+    .burger:hover {
+        transform: scale(1.05);
+    }
+
+    .menu {
+        display: none;
+        position: absolute;
+        width: 40%;
+        top: 60px;
+        right: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);   
+    }
+
+    .menu ul:not(.dropdown ul) {
+        display: inline;
+        padding: 0;
+    }
+
+    .menu ul li {
+        color: #212832;
+        font-size: 0.8em;
+        padding: 20px;
+    }
+
+    .dropdown li {
+        border-bottom: none ;
+    }
+
+    .menu ul li:not(.dropdown li) {
+        border-bottom: 0.005em solid #a9a4a449  ;
+    }
+
+    .dropdown {
+        background: none;
+        border-radius: 0%;
+        box-shadow: none;
+        width: 100%;
+    }
+
+    .dropdown li a {
+        font-size: 1.2em;
+    }
+    
+}
