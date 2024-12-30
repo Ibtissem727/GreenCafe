@@ -1,5 +1,5 @@
  .main-contact {
-    height: 100vh;
+    height: 105vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -68,13 +68,13 @@
 }
 
  .form {
-    width: 80%;
+    width: 70%;
     display: flex;
     flex-direction: column;
-    gap: 2vw;
     background-color: #fff;
     border-radius: 10px;
     position: relative;
+    gap: clamp(0.8rem, 1vw, 2rem); 
   }
   
   .input {
@@ -219,7 +219,7 @@
     width: 0;
   }
 
-  @media (max-width: 768px){
+  @media (max-width:  768px){
     .main-contact {
       display: flex;
       flex-direction: column-reverse;
@@ -232,6 +232,9 @@
       font-size: 1em;
     }
 
+    .form {
+      gap: 3vw;
+    }
     .form-section {
       height: 70%;
       width: 100%;
@@ -240,8 +243,14 @@
     .main-bg::after {
       background-position: 30% 30%;
     }
-
+    
   }
+  
+
+  
+  
+
+
   
 
 

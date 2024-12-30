@@ -252,6 +252,7 @@
     .hero-section {
         height: 240px;
         letter-spacing: 1px;
+        margin-top: 60px;
     }
 
     .slider {
