@@ -86,12 +86,10 @@ i:hover {
 }
 
 @media(max-width: 768px) {
-    footer p, footer li {
+    footer  {
+        height: 200px;
         font-size: small;
-    }
-
-    
-
-
+        
+    }    
 }
    

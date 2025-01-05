@@ -11,7 +11,7 @@
     margin-top: 100px;
 }
 
-.hero-section h1 {
+.hero-section h1, .slider-container h1 {
     font-size: 3vw;
     color: #381F1D;
     letter-spacing: 2px;
@@ -200,6 +200,7 @@
 
 .produits_menu {
     text-align: center;
+    font-size: 2vw;
 }
 
 .produits_menu img {
