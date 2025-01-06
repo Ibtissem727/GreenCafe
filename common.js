@@ -80,43 +80,54 @@ document.addEventListener("DOMContentLoaded", function () {
         return urlParams.get(name);
     }
 
-    const sectionId = getUrlParameter('section');
-
-    document.querySelectorAll('.menu-cafe').forEach(section => {
-        section.classList.remove('active');
-    });
-
-    if (sectionId) {
-        const targetSection = document.getElementById(sectionId);
-        if (targetSection) {
-            targetSection.classList.add('active');
-        } else {
-            console.error(`Section with ID '${sectionId}' not found.`);
-        }
-    } 
-    /*else {
-        console.log("Aucune section spécifiée, afficher la section par défaut.");
-        document.querySelector('.menu-cafe').classList.add('active');
-    }*/
-});
-
-
-$(document).ready(() => {
-    // Charger dynamiquement les images en background CSS
-    $('.css-background').each(function () {
-        const backgroundUrl = $(this).css('background-image').slice(5, -2); // Récupère l'URL
-        const img = new Image();
-        img.src = backgroundUrl;
-        img.onload = () => {
-            console.log(`Image ${backgroundUrl} chargée avec succès`);
-        };
-    });
-
-    // Charger dynamiquement les balises img avec lazy loading
-    $('.lazy-load').each(function () {
-        $(this).attr('src', $(this).data('src'));
-        $(this).on('load', () => {
-            console.log(`Image ${$(this).attr('src')} chargée avec succès`);
+    function activateSection(sectionId) {
+        document.querySelectorAll('.menu-cafe').forEach(section => {
+            section.classList.remove('active');
         });
+
+        if (sectionId) {
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                console.log(`Section '${sectionId}' activée.`);
+                loadImages(); 
+            } else {
+                console.error(`Section with ID '${sectionId}' not found.`);
+            }
+        }
+    }
+
+    function loadImages() {
+        // Charger dynamiquement les images de background CSS
+        $('.css-background').each(function () {
+            const backgroundUrl = $(this).css('background-image').slice(5, -2); // Récupère l'URL
+            const img = new Image();
+            img.src = backgroundUrl;
+            img.onload = () => {
+                console.log(`Image ${backgroundUrl} chargée avec succès`);
+            };
+        });
+
+        // Charger dynamiquement les balises img avec lazy loading
+        $('.lazy-load').each(function () {
+            const $img = $(this);
+            if (!$img.attr('src')) { 
+                $img.attr('src', $img.data('src'));
+                $img.on('load', () => {
+                    console.log(`Image ${$img.attr('src')} chargée avec succès`);
+                });
+            }
+        });
+    }
+
+    // Active la section initiale
+    const sectionId = getUrlParameter('section');
+    activateSection(sectionId || 'default'); 
+
+    
+    $(document).on('click', '.menu-item', function () {
+        const newSectionId = $(this).data('section-id'); 
+        activateSection(newSectionId);
+        history.pushState(null, '', `?section=${newSectionId}`); 
     });
 });
