@@ -99,3 +99,24 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('.menu-cafe').classList.add('active');
     }*/
 });
+
+
+$(document).ready(() => {
+    // Charger dynamiquement les images en background CSS
+    $('.css-background').each(function () {
+        const backgroundUrl = $(this).css('background-image').slice(5, -2); // Récupère l'URL
+        const img = new Image();
+        img.src = backgroundUrl;
+        img.onload = () => {
+            console.log(`Image ${backgroundUrl} chargée avec succès`);
+        };
+    });
+
+    // Charger dynamiquement les balises img avec lazy loading
+    $('.lazy-load').each(function () {
+        $(this).attr('src', $(this).data('src'));
+        $(this).on('load', () => {
+            console.log(`Image ${$(this).attr('src')} chargée avec succès`);
+        });
+    });
+});
