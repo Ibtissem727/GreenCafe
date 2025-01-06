@@ -3,7 +3,7 @@ footer {
         to bottom, 
         rgba(255, 254, 254, 0.688),  
         rgba(184, 161, 158, 0.5) 
-      ), url('images/footer.png');
+      ), url('images/footer.png?v=1.0');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     width: 100%;
